@@ -1,50 +1,50 @@
-# React + TypeScript + Vite
+# Autenticação Google com Firebase
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este repositório contém um projeto de autenticação utilizando o Firebase e a autenticação do Google. O objetivo é demonstrar como integrar a autenticação do Google em uma aplicação web usando o Firebase como backend.
 
-Currently, two official plugins are available:
+## Tecnologias Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Firebase**: Plataforma de desenvolvimento de aplicativos que fornece uma variedade de serviços, incluindo autenticação, banco de dados em tempo real, e hospedagem.
+- **JavaScript**: Linguagem de programação utilizada para implementar a lógica do cliente.
+- **HTML/CSS**: Tecnologias utilizadas para estruturar e estilizar a interface do usuário.
 
-## Expanding the ESLint configuration
+## Principais Funcionalidades
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### 1. Configuração do Firebase
 
-- Configure the top-level `parserOptions` property like this:
+O projeto começa com a configuração do Firebase. É necessário criar um projeto no [Firebase Console](https://console.firebase.google.com/) e habilitar o método de autenticação do Google. As credenciais do projeto são então integradas ao código.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+### 2. Autenticação com Google
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+A principal funcionalidade do projeto é permitir que os usuários se autentiquem usando suas contas do Google. O fluxo de autenticação é gerenciado pelo Firebase, que simplifica o processo de login e registro.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+### 3. Interface do Usuário
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+A interface do usuário é construída com HTML e CSS, proporcionando uma experiência simples e intuitiva. Os usuários podem clicar em um botão para iniciar o processo de login com o Google.
+
+### 4. Gerenciamento de Sessão
+
+Após a autenticação, o Firebase gerencia a sessão do usuário. O estado de autenticação é monitorado, permitindo que a aplicação reaja a mudanças no estado do usuário (por exemplo, se o usuário fizer logout).
+
+### 5. Logout
+
+Os usuários podem sair da aplicação a qualquer momento. O projeto implementa uma funcionalidade de logout que limpa a sessão do usuário e redireciona para a página inicial.
+
+## Como Executar o Projeto
+
+1. Clone o repositório:
+   ```bash
+  git clone https://github.com/HugoZAuad/Autentica-o_google-firebase.git
+
+2. Navegue até o diretório do projeto:
+  cd Autentica-o_google-firebase
+
+3. Abra o arquivo index.html em um navegador web.
+
+4. Certifique-se de que as credenciais do Firebase estão corretamente configuradas no código.
+
+## Contribuições
+Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests.
+
+## Contato
+Sinta-se à vontade para ajustar qualquer parte do texto conforme necessário!
