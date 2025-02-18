@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { GoogleLogo } from '@phosphor-icons/react';
-import { GoogleAuthProvider, signInWithPopup, onAuthStateChanged, User } from 'firebase/auth';
+import { GoogleAuthProvider, signInWithPopup, onAuthStateChanged, signOut, User } from 'firebase/auth';
 import { auth } from '../../Services/firebase';
 import './Styles.scss';
 
@@ -28,6 +28,18 @@ export function SignIn() {
     }
   }
 
+  async function handleLogout() {
+    try {
+      await signOut(auth);
+      setUser({} as User);
+      alert('Logout realizado com sucesso!');
+      window.location.href = '/'; // Redireciona para a página inicial
+    } catch (error) {
+      console.error('Erro ao fazer logout:', error);
+      alert('Erro ao fazer logout. Por favor, tente novamente.');
+    }
+  }
+
   return (
     <div className="container">
       <div className="user">
@@ -48,6 +60,16 @@ export function SignIn() {
         <GoogleLogo className="icon" />
         {loading ? 'Carregando...' : 'Entrar com Google'}
       </button>
+
+      {user.email && (
+        <button
+          type="button"
+          className="logout-button"
+          onClick={handleLogout}
+        >
+          Sair
+        </button>
+      )}
     </div>
   );
 }
