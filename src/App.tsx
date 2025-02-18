@@ -1,9 +1,23 @@
 import { SignIn } from './pages/SignIn';
-import './Styles/global.scss'
+import { SignUpForm } from './pages/SignUp';
+import './Styles/global.scss';
+import { useState } from 'react';
 
 export default function App() {
+  const [isSignUp, setIsSignUp] = useState(true);
 
   return (
-    <SignIn />
+    <>
+      {isSignUp ? (
+        <SignUpForm />
+      ) : (
+        <SignIn />
+      )}
+      <button className='button2'
+        onClick={() => setIsSignUp(!isSignUp)}
+      >
+        {isSignUp ? 'Ir para Login com o google' : 'Ir para Cadastro com o seu e-mail'}
+      </button>
+    </>
   );
 }

@@ -24,4 +24,16 @@
   button {
     font-family: 'Poppins', sans-serif;
     cursor: pointer;
+    padding: 10px 20px;
+    margin: 20px auto;
+    display: block;
+    background-color: var(--caption);
+    border: none;
+    border-radius: 10px;
+    color: var(--text);
+
+    &:hover{
+      background-color: var(--text);
+      color: #449bff;
+    }
   }
