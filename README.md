@@ -1,6 +1,6 @@
 # Autenticação Google com Firebase
 
-Este repositório contém um projeto de autenticação utilizando o Firebase e a autenticação do Google. O objetivo é demonstrar como integrar a autenticação do Google em uma aplicação web usando o Firebase como backend.
+Este projeto demonstra como implementar a autenticação usando a conta Google em uma aplicação web, utilizando o Firebase como backend. O projeto inclui as seguintes funcionalidades principais:
 
 ## Tecnologias Utilizadas
 
@@ -43,8 +43,32 @@ Os usuários podem sair da aplicação a qualquer momento. O projeto implementa 
 
 4. Certifique-se de que as credenciais do Firebase estão corretamente configuradas no código.
 
+5. Acessar a Aplicação:
+
+  Abra o navegador em http://localhost:3000.
+
+## Estrutura de pastas
+
+google-auth-firebase/
+├── public/
+│   ├── index.html
+│   └── styles.css
+├── src/
+│   ├── firebase.js
+│   ├── app.js
+│   └── components/
+│       └── LoginButton.js
+├── firebaseConfig.js
+├── package.json
+└── README.md
+
 ## Contribuições
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests.
+  Abrir issues para reportar problemas ou sugerir melhorias.
+  
+  Fazer um fork do repositório, criar uma nova branch para sua feature ou bug fix, e enviar um pull request.
 
 ## Contato
 Sinta-se à vontade para ajustar qualquer parte do texto conforme necessário!
+
+## Deploy
+- https://autentica-o-google-firebase.vercel.app
