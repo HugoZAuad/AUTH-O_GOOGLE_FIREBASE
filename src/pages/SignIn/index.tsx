@@ -5,12 +5,12 @@ import { auth } from '../../Services/firebase';
 import './Styles.scss';
 
 export function SignIn() {
-  const [user, setUser] = useState<User>({} as User);
+  const [user, setUser ] = useState<User>({} as User);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser ?? {} as User);
+    const unsubscribe = onAuthStateChanged(auth, (currentUser ) => {
+      setUser (currentUser  ?? {} as User);
       setLoading(false);
     });
 
@@ -21,7 +21,8 @@ export function SignIn() {
     try {
       const provider = new GoogleAuthProvider();
       const result = await signInWithPopup(auth, provider);
-      setUser(result.user);
+      setUser (result.user);
+      console.log('Usuário autenticado:', result.user);
     } catch (error) {
       console.error('Erro ao fazer login:', error);
       alert('Erro ao fazer login. Por favor, tente novamente.');
@@ -31,9 +32,9 @@ export function SignIn() {
   async function handleLogout() {
     try {
       await signOut(auth);
-      setUser({} as User);
+      setUser ({} as User);
       alert('Logout realizado com sucesso!');
-      window.location.href = '/'; // Redireciona para a página inicial
+      window.location.href = '/';
     } catch (error) {
       console.error('Erro ao fazer logout:', error);
       alert('Erro ao fazer logout. Por favor, tente novamente.');
@@ -46,7 +47,7 @@ export function SignIn() {
         {user.photoURL && (
           <img src={user.photoURL} alt="Foto do usuário" className="user-photo" />
         )}
-        <strong className="user-name">{user.displayName || 'Visitante'}</strong>
+        <strong className="user-name">{user.displayName || 'Olá visitante'}</strong>
         <small className="user-email">{user.email || ''}</small>
       </div>
 
