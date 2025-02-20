@@ -1,73 +1,118 @@
-.container {
-  width: 100%;
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes move {
+  0% {
+    transform: translate3d(0px, 0px, 0px);
+  }
+  100% {
+    transform: translate3d(1000px, 1000px, 0px);
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
   height: 100vh;
-
   display: flex;
-  flex: 1;
-
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #4a0e8f, #ff9a8b);
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
+  position: relative;
+  overflow: hidden;
 }
 
-.button {
-  height: 56px;
-  width: 650px;
+.container {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  z-index: 1;
+  
+  .user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem;
 
-  color: var(--text);
-  background: #ff4444;
-  border-image: linear-gradient(to right, var(--primary), var(--gray)) 1;
+    &-photo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin-bottom: 0.5rem;
+    }
 
-  margin-top: 32px;
-  font-size: 18px;
+    &-name {
+      font-size: 1.2rem;
+      margin-bottom: 0.25rem;
+    }
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  transition: background-color 0.3s;
-
-  svg {
-    font-size: 24px;
-    margin-right: 7px;
+    &-email {
+      font-size: 0.9rem;
+      color: #666;
+    }
   }
 
-  &:hover {
-    background-color: var(--text);
-    color: #ff4444;
-  }
-}
-
-.user {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  text-align: center;
-  margin-bottom: 2rem;
-
-  img {
-    width: 140px;
-    height: 140px;
-
-    border-radius: 70px;
-
-    margin-bottom: 16px;
-  }
-
-  .user-photo {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
+  h1 {
+    text-align: center;
     margin-bottom: 1rem;
   }
 
-  .user-name {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #ff0000;
+    color: white;
+    border: 2px solid #dddddd;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #b80000;
+    }
+
+    &:disabled {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+
+    .icon {
+      margin-right: 0.5rem;
+    }
   }
 
-  .user-email {
-    font-size: 0.9rem;
-    color: #666;
+  .logout-button {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    margin-top: 1rem;
+    background-color: #f44336;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #d32f2f;
+    }
   }
 }
