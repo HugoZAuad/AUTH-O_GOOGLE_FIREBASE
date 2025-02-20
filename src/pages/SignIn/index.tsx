@@ -71,7 +71,6 @@ export function SignIn() {
 
       if (response.data.success) {
         alert('Login realizado com sucesso!');
-
       } else {
         alert('Erro ao fazer login. Verifique suas credenciais.');
       }
@@ -85,86 +84,90 @@ export function SignIn() {
 
   return (
     <div className="container">
-      <div className="user">
-        {user.photoURL && (
+      {user.photoURL && (
+        <div className="user">
           <img
             src={user.photoURL}
             alt="Foto do usuário"
             className="user-photo"
           />
-        )}
-        <strong className="user-name">
-          {user.displayName || "Olá visitante,"}
-        </strong>
-        <small className="user-email">{user.email || ""}</small>
-      </div>
-
-      <h1>Acesse sua conta</h1>
-
-      <div className="formGroup">
-        <label htmlFor="email" className="label">
-          E-mail:
-        </label>
-        <input
-          type="email"
-          id="email"
-          value={email}
-          onChange={handleEmailChange}
-          className="input"
-          required
-        />
-      </div>
-
-      <div className="formGroup">
-        <label htmlFor="password" className="label">
-          Senha:
-        </label>
-        <div className="passwordContainer">
-          <input
-            type={showPassword ? "text" : "password"}
-            id="password"
-            value={password}
-            onChange={handlePasswordChange}
-            className="input"
-            required
-          />
-          <button
-            type="button"
-            onClick={() => setShowPassword(!showPassword)}
-            className="togglePassword"
-            aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
-          >
-            <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
-          </button>
+          <strong className="user-name">
+            {user.displayName || "Olá visitante,"}
+          </strong>
+          <small className="user-email">{user.email || ""}</small>
         </div>
-      </div>
-      <button
-        type="button"
-        className="buttonE"
-        onClick={handleLogin}
-        disabled={loading}
-      >
-        {loading ? "Entrando..." : "Entrar"}
-      </button>
+      )}
 
-      <div>
-        <h1 className="ou">OU</h1>
-      </div>
-
-      <button
-        type="button"
-        className="button"
-        onClick={handleGoogleSignIn}
-        disabled={loading}
-      >
-        <GoogleLogo className="icon" />
-        {loading ? "Carregando..." : "Entrar com Google"}
-      </button>
-
-      {user.email && (
+      {loading ? (
+        <h1>Carregando...</h1>
+      ) : user.email ? (
         <button type="button" className="logout-button" onClick={handleLogout}>
           Sair
         </button>
+      ) : (
+        <>
+          <h1>Acesse sua conta</h1>
+
+          <div className="formGroup">
+            <label htmlFor="email" className="label">
+              E-mail:
+            </label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={handleEmailChange}
+              className="input"
+              required
+            />
+          </div>
+
+          <div className="formGroup">
+            <label htmlFor="password" className="label">
+              Senha:
+            </label>
+            <div className="passwordContainer">
+              <input
+                type={showPassword ? "text" : "password"}
+                id="password"
+                value={password}
+                onChange={handlePasswordChange}
+                className="input"
+                required
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="togglePassword"
+                aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
+              >
+                <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
+              </button>
+            </div>
+          </div>
+          <button
+            type="button"
+            className="buttonE"
+            onClick={handleLogin}
+            disabled={loading}
+          >
+            {loading ? "Entrando..." : "Entrar"}
+          </button>
+
+          <div>
+            <h1 className="ou">OU</h1>
+          </div>
+
+          <button
+            type="button"
+            className="button"
+            onClick={handleGoogleSignIn}
+            disabled={loading}
+          >
+            <GoogleLogo className="icon" />
+            {loading ? "Carregando..." : "Entrar com Google"}
+          </button>
+        </>
       )}
     </div>
   );
