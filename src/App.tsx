@@ -16,7 +16,7 @@ export default function App() {
       <button className='button2'
         onClick={() => setIsSignUp(!isSignUp)}
       >
-        {isSignUp ? 'Ir para Login com o google' : 'Ir para Cadastro com o seu e-mail'}
+        {isSignUp ? 'Ir para o Login com e-mail ou sua conta google' : 'Ir para Cadastrar o seu e-mail'}
       </button>
     </>
   );

@@ -1,3 +1,4 @@
+// Styles.scss
 @keyframes gradient {
   0% {
     background-position: 0% 50%;
@@ -10,15 +11,6 @@
   }
 }
 
-@keyframes move {
-  0% {
-    transform: translate3d(0px, 0px, 0px);
-  }
-  100% {
-    transform: translate3d(1000px, 1000px, 0px);
-  }
-}
-
 body {
   margin: 0;
   padding: 0;
@@ -26,7 +18,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab, #4a0e8f, #ff9a8b);
+  background: linear-gradient(
+    -45deg,
+    #ee7752,
+    #e73c7e,
+    #23a6d5,
+    #23d5ab,
+    #4a0e8f,
+    #ff9a8b
+  );
   background-size: 400% 400%;
   animation: gradient 10s ease infinite;
   position: relative;
@@ -40,7 +40,7 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(10px);
   z-index: 1;
-  
+
   .user {
     display: flex;
     flex-direction: column;
@@ -70,6 +70,49 @@ body {
     margin-bottom: 1rem;
   }
 
+  .formGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    .label {
+      color: #ddd;
+    }
+
+    .input {
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 16px;
+
+      &.error {
+        border-color: #ff4444;
+      }
+    }
+
+    .passwordContainer {
+      display: flex;
+      align-items: center;
+      position: relative;
+
+      .input {
+        flex: 1;
+        padding-right: 40px;
+      }
+
+      .togglePassword {
+        position: absolute;
+        right: 10px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: #444;
+        font-size: 16px;
+        outline: none;
+      }
+    }
+  }
+
   .button {
     display: flex;
     align-items: center;
@@ -78,7 +121,6 @@ body {
     padding: 0.75rem;
     background-color: #ff0000;
     color: white;
-    border: 2px solid #dddddd;
     border-radius: 4px;
     font-size: 1rem;
     cursor: pointer;
@@ -114,5 +156,37 @@ body {
     &:hover {
       background-color: #d32f2f;
     }
+  }
+}
+.ou {
+  font-size: 600;
+  font-weight: bolder;
+  padding-top: 10px;
+}
+
+.buttonE {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #006805;
+  }
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  .icon {
+    margin-right: 0.5rem;
   }
 }
