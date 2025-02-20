@@ -1,6 +1,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import styles from './styles.module.scss';
 
 type FormData = {
@@ -11,6 +13,7 @@ type FormData = {
 
 export const SignUpForm = () => {
   const [loading, setLoading] = React.useState(false);
+  const [showPassword, setShowPassword] = React.useState(false);
   const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
 
   const onSubmit = async (data: FormData) => {
@@ -25,7 +28,6 @@ export const SignUpForm = () => {
 
       if (response.data.success) {
         alert('Cadastro realizado com sucesso!');
-       
         window.location.href = '/login';
       } else {
         alert('Erro ao cadastrar. Por favor, tente novamente.');
@@ -85,16 +87,26 @@ export const SignUpForm = () => {
 
         <div className={styles.formGroup}>
           <label htmlFor="password">Senha:</label>
-          <input
-            type="password"
-            id="password"
-            {...register('password', {
-              required: 'A senha é obrigatória',
-              minLength: { value: 6, message: 'A senha deve ter pelo menos 6 caracteres' }
-            })}
-            className={`${styles.input} ${errors.password ? styles.error : ''}`}
-            aria-required="true"
-          />
+          <div className={styles.passwordContainer}>
+            <input
+              type={showPassword ? 'text' : 'password'}
+              id="password"
+              {...register('password', {
+                required: 'A senha é obrigatória',
+                minLength: { value: 6, message: 'A senha deve ter pelo menos 6 caracteres' }
+              })}
+              className={`${styles.input} ${errors.password ? styles.error : ''}`}
+              aria-required="true"
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className={styles.togglePassword}
+              aria-label={showPassword ? 'Ocultar senha' : 'Mostrar senha'}
+            >
+              <FontAwesomeIcon icon={showPassword ? faEye : faEyeSlash} />
+            </button>
+          </div>
           {errors.password && (
             <span className={styles.errorMessage} role="alert">
               {errors.password.message}
