@@ -48,7 +48,7 @@ Os usuários podem sair da aplicação a qualquer momento. O projeto implementa 
   Abra o navegador em http://localhost:3000.
 
 ## Estrutura de pastas
-
+```
 google-auth-firebase/
 ├── public/
 │   ├── index.html
@@ -61,7 +61,7 @@ google-auth-firebase/
 ├── firebaseConfig.js
 ├── package.json
 └── README.md
-
+```
 ## Contribuições
   Abrir issues para reportar problemas ou sugerir melhorias.
   
